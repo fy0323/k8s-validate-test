@@ -5,15 +5,7 @@ on:
       - main
 
 jobs:
-  #kubeval-1:
-  #  runs-on: ubuntu-latest
-  #  steps:
-  #    - uses: actions/checkout@v2
-  #    - name: validate manifests in app
-  #      uses: makocchi-git/actions-k8s-manifests-validate-kubeval@1.0.0
-  #      with:
-  #        files: app/*.yml
-  kubeval-2:
+  kubeval:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -23,17 +15,7 @@ jobs:
         with:
           files: app
     
-  kube-score-1:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: kube-score check
-      uses: piraces/kube-score-ga@v0.1.1
-      with:
-        manifests-folders: './app/*.yml'
-        #ignore-exit-code: true
-  kube-score-2:
+  kube-score:
     runs-on: ubuntu-latest
     steps:
     - name: checkout
@@ -51,4 +33,11 @@ jobs:
         echo "/usr/local/bin/" >> $GITHUB_PATH
         kube-score score ./app/*.yml
 
-  #conftest:
+  conftest:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: test
+      uses: instrumenta/conftest-action@master
+      with:
+        files: ./app/*.yml
