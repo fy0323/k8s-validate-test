@@ -7,7 +7,7 @@ metadata:
 spec:
   replicas: 3
   selector:
-    matchLabels:
+    matchLabel:  # add typo
       app: nginx
   template:
     metadata:
