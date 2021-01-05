@@ -38,6 +38,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: test
+      continue-on-error: true
       uses: instrumenta/conftest-action@master
       with:
         files: ./app/*.yml
