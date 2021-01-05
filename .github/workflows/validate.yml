@@ -20,7 +20,7 @@ jobs:
       - name: test
         uses: instrumenta/kubeval-action@master
         with:
-          files: './app/*.yml'
+          files: app
     
   kube-score:
     runs-on: ubuntu-latest
@@ -31,5 +31,5 @@ jobs:
       uses: piraces/kube-score-ga@v0.1.1
       with:
         manifests-folders: './app/*.yml'
-        ignore-exit-code: true
+        #ignore-exit-code: true
   #conftest:
