@@ -22,7 +22,7 @@ jobs:
         with:
           files: app
     
-  kube-score:
+  kube-score-1:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -32,4 +32,17 @@ jobs:
       with:
         manifests-folders: './app/*.yml'
         #ignore-exit-code: true
+  kube-score-2:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+    - name: install kubescore
+      run: |
+        wget https://github.com/zegl/kube-score/releases/download/v1.10.0/kube-score_1.10.0_linux_amd64
+        sudo mv kube-score_1.10.0_linux_amd64 /usr/local/bin/kube-score
+    - name: scan manifests
+      run: |
+        kube-score score ./app/*.yml
+
   #conftest:
