@@ -40,9 +40,10 @@ jobs:
     - name: install kubescore
       run: |
         wget https://github.com/zegl/kube-score/releases/download/v1.10.0/kube-score_1.10.0_linux_amd64
-        sudo mv kube-score_1.10.0_linux_amd64 kube-score
+        sudo mv kube-score_1.10.0_linux_amd64 /usr/local/bin/kube-score
     - name: scan manifests
       run: |
-        sudo ./kube-score score ./app/*.yml
+        echo "/usr/local/bin/" >> $GITHUB_PATH
+        sudo kube-score score ./app/*.yml
 
   #conftest:
