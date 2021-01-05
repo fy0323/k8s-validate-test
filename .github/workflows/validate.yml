@@ -20,7 +20,7 @@ jobs:
       - name: test
         uses: instrumenta/kubeval-action@master
         with:
-          files: ./app/*.yml
+          files: './app/*.yml'
     
   kube-score:
     runs-on: ubuntu-latest
