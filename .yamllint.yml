@@ -1,8 +1,11 @@
 ---
 extends: default
 
+ignore: |
+  .yamllint.yml
+
 rules:
-  indentation: 
+  indentation:
     spaces: 2
     indent-sequences: false
   new-line-at-end-of-file: disable
