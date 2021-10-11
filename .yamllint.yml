@@ -1,9 +1,6 @@
 ---
 extends: default
 
-ignore: |
-  .yamllint.yml
-
 rules:
   indentation:
     spaces: 2
